@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+$font-size: 18px;
+$border-color: #ccc;
+$background-color: #f1f1f1;
+$font-family: Roboto, sans-serif;
+$color: #333;
+$selected-color: #e9e9e9;
+
+.autocomplete {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+
+    &__input {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding: 8px;
+        border: 1px solid $border-color;
+        outline: none;
+
+        &--input {
+            width: 100%;
+            color: $color;
+            font-family: $font-family;
+            font-size: $font-size;
+            border: 0;
+            outline: none;
+        }
+
+        &--icon {
+            width: 24px;
+            height: 24px;
+            right: 8px;
+            cursor: pointer;
+
+            img {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+
+    &__list {
+        position: absolute;
+        z-index: 9999;
+        width: 100%;
+        background-color: $background-color;
+        border: 1px solid $border-color;
+        overflow-y: auto;
+
+        &.top {
+            display: flex;
+            flex-direction: column-reverse;
+            bottom: 100%;
+        }
+
+        &.bottom {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &--item {
+            padding: 8px;
+            cursor: pointer;
+            font-family: $font-family;
+            font-size: $font-size;
+
+            &:hover {
+                background-color: $selected-color;
+            }
+
+            &.selected {
+                background-color: $selected-color;
+            }
+        }
+    }
+}

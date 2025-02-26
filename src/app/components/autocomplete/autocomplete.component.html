@@ -1,0 +1,32 @@
+<div class="autocomplete">
+  <div class="autocomplete__input">
+    <div class="autocomplete__input--label">{{label}}</div>
+    <input 
+      [type]="type"
+      [placeholder]="placeholder"
+      [autocomplete]="autocomplete"
+      [disabled]="disabled"
+      [readonly]="readonly"
+      [required]="required"
+      [id]="id"
+      [name]="name"
+      [ngClass]="customClasses"
+
+      (focus)="onFocus($event)"
+      (blur)="onBlur($event)"
+      (input)="onInput($event)"
+      
+      [(ngModel)]="text"
+
+      class="autocomplete__input--input"
+    >
+    <div class="autocomplete__input--icon" *ngIf="showIcon() && iconUrl !== ''">
+      <img [src]="iconUrl" alt="icon">
+    </div>
+  </div>
+  <div class="autocomplete__list" *ngIf="showList()" [class.bottom]="position === 'bottom'" [class.top]="position === 'top'">
+    <div *ngFor="let item of limitedList()" (click)="onSelect(item)" class="autocomplete__list--item" [class.selected]="isOptionSelected(item)">
+      {{ item.text }}
+    </div>
+  </div>
+</div>
